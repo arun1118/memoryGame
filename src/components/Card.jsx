@@ -1,24 +1,25 @@
 import React from 'react'
 import './Card.css'
 
-const Card = ({card:cardDetails, handleClick}) => {
+const Card = ({card:cardDetails, handleClick, isFlip}) => {
 
     const handleChoice = ()=>{
         handleClick(cardDetails)
     }
 
     return (
-      <div>
+      <div className='card'>
+        <div className={isFlip ? 'card-flip': ''}>
           <img 
             src={`./image/cartoon/${cardDetails["src:"]}`} 
             alt={cardDetails.name}  
-            className='card front-side' />
-
+            className='front-side' />
           <img 
             src="./image/cover/cover.jpeg" 
             alt="cover" 
-            className='card back-side'
+            className='back-side'
             onClick={handleChoice} />
+        </div>
       </div>
     )
 }

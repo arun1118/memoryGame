@@ -4,21 +4,21 @@ import Card from './components/Card'
 const App = () => {
 
   const images = [
-    {"src:" : "ben.png", "name": "ben10"},
-    {"src:" : "doremon.jpg", "name": "doremon"},
-    {"src:" : "duck.jpeg", "name": "duck"},
-    {"src:" : "hattori.jpg", "name": "hattori"},    
-    {"src:" : "jack.png", "name": "jack"},
-    {"src:" : "jerry.png", "name": "jerry"},
-    {"src:" : "oggy.jpeg", "name": "oggy"},
-    {"src:" : "peter.png", "name": "peter"},
-    {"src:" : "popeya.jpeg", "name": "popeya"},
-    {"src:" : "scoobydoo.jpeg", "name": "scoobydoo"},
-    {"src:" : "sinchan.jpg", "name": "sinchan"},
-    {"src:" : "sisimaru.jpeg", "name": "sisimaru"},
-    {"src:" : "sizuka.jpg", "name": "sizuka"},
-    {"src:" : "spike.png", "name": "spike"},
-    {"src:" : "tom.png", "name": "tom"}
+    {"src:" : "ben.png", "name": "ben10", "matched": false},
+    {"src:" : "doremon.jpg", "name": "doremon", "matched": false},
+    {"src:" : "duck.jpeg", "name": "duck", "matched": false},
+    {"src:" : "hattori.jpg", "name": "hattori", "matched": false},    
+    {"src:" : "jack.png", "name": "jack", "matched": false},
+    {"src:" : "jerry.png", "name": "jerry", "matched": false},
+    {"src:" : "oggy.jpeg", "name": "oggy", "matched": false},
+    {"src:" : "peter.png", "name": "peter", "matched": false},
+    {"src:" : "popeya.jpeg", "name": "popeya", "matched": false},
+    {"src:" : "scoobydoo.jpeg", "name": "scoobydoo", "matched": false},
+    {"src:" : "sinchan.jpg", "name": "sinchan", "matched": false},
+    {"src:" : "sisimaru.jpeg", "name": "sisimaru", "matched": false},
+    {"src:" : "sizuka.jpg", "name": "sizuka", "matched": false},
+    {"src:" : "spike.png", "name": "spike", "matched": false},
+    {"src:" : "tom.png", "name": "tom", "matched": false}
   ]
 
   const [displayCards,setDisplayCards] = useState([])
@@ -47,12 +47,20 @@ const App = () => {
   useEffect(()=>{
     if(firstCard && secondCard){
       if(firstCard.name === secondCard.name){
-        console.log("matched")
+        setDisplayCards((prevCards)=>{
+          return prevCards.map((currentCard)=>{
+            if(currentCard.name === firstCard.name){
+              return {...currentCard, "matched": true}
+            }
+            else return currentCard
+          })
+        })
+        resetCardChoie()
       }
       else{
-        console.log("mismatched")
+        setTimeout(()=> resetCardChoie(), 1500) 
       }
-      resetCardChoie()
+      
     }
   },[firstCard, secondCard])
   
@@ -65,7 +73,7 @@ const App = () => {
         <br /><br />
 
         {displayCards.map((card)=>{
-          return <Card card={card} handleClick={handleClick} key={card.id} />
+          return <Card card={card} handleClick={handleClick} key={card.id} isFlip={card === firstCard || card === secondCard || card.matched} />
           })}
       </div>
     </>

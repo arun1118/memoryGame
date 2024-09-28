@@ -1,8 +1,19 @@
 .card{
-    width: 125px;
-    height: 100px;
+    position: relative;
 }
 
-.back-side{
+.card img{
+    border: 1px solid black;
+    width: 125px;
+    height: 100px;
+    border-radius: 5%;
+}
+
+.card .front-side{
+    transform: rotateY(90deg);
     position: absolute;
+}
+
+.card-flip .front-side{
+    transform: rotateY(0deg);
 }
