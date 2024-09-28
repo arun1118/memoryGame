@@ -1,10 +1,10 @@
 import React from 'react'
 import './Card.css'
 
-const Card = ({card:cardDetails, handleClick, isFlip}) => {
+const Card = ({card:cardDetails, handleClick, isFlip, flipDisable}) => {
 
     const handleChoice = ()=>{
-        handleClick(cardDetails)
+        if(!flipDisable) handleClick(cardDetails)
     }
 
     return (
