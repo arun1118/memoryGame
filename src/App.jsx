@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Card from './components/Card'
 
 const App = () => {
 
@@ -21,16 +22,42 @@ const App = () => {
   ]
 
   const [displayCards,setDisplayCards] = useState([])
+  const [firstCard,setFirstCard] = useState(null)
+  const [secondCard,setSecondCard] = useState(null)
 
+  
   const shuffleCards = ()=>{
     const tempShuffledCards = [...images,...images].sort(()=> Math.random()-0.5).map((card)=> ({...card,"id": Math.random()}))
     setDisplayCards(tempShuffledCards)
   }
-
+  
   const startGame = ()=>{
     shuffleCards();
   }
+  
+  const handleClick = (currentCard)=>{
+    (!firstCard) ? setFirstCard(currentCard) : setSecondCard(currentCard)
+  }
 
+  const resetCardChoie = ()=>{
+    setFirstCard(null)
+    setSecondCard(null)
+  }
+  
+  useEffect(()=>{
+    if(firstCard && secondCard){
+      if(firstCard.name === secondCard.name){
+        console.log("matched")
+      }
+      else{
+        console.log("mismatched")
+      }
+      resetCardChoie()
+    }
+  },[firstCard, secondCard])
+  
+  
+  
   return (
     <>
       <div>
@@ -38,13 +65,8 @@ const App = () => {
         <br /><br />
 
         {displayCards.map((card)=>{
-          return <img 
-            src={`./image/cartoon/${card["src:"]}`} 
-            alt={card.name} 
-            key={card.id} 
-            width="125px"
-            height="100px" />
-        })}
+          return <Card card={card} handleClick={handleClick} key={card.id} />
+          })}
       </div>
     </>
   )

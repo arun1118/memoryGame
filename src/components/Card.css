@@ -1,0 +1,8 @@
+.card{
+    width: 125px;
+    height: 100px;
+}
+
+.back-side{
+    position: absolute;
+}
