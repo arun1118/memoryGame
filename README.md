@@ -1,8 +1,13 @@
-# React + Vite
+This project is a fun and challenging card flipping memory game where you can sharpen your recall skills and have a blast!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
 
-Currently, two official plugins are available:
+Difficulty Levels: Choose from different difficulty levels to personalize your challenge. Whether you're a memory maestro or just starting, there's a setting for you.
+Card Category Selection: Spice things up by picking a theme for your card deck! Select your favorite categories, like cartoon characters, sports icons, or adorable animals.
+How to Play:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Select your desired difficulty level.
+Choose a theme for your card deck.
+Flip the cards to reveal their hidden images.
+Try to match pairs of cards by remembering their locations.
+Challenge yourself to complete the game with the fewest flips and in the fastest time!

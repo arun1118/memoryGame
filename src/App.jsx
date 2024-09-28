@@ -1,33 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+
+  const images = [
+    {"src:" : "ben.png", "name": "ben10"},
+    {"src:" : "doremon.jpg", "name": "doremon"},
+    {"src:" : "duck.jpeg", "name": "duck"},
+    {"src:" : "hattori.jpg", "name": "hattori"},    
+    {"src:" : "jack.png", "name": "jack"},
+    {"src:" : "jerry.png", "name": "jerry"},
+    {"src:" : "oggy.jpeg", "name": "oggy"},
+    {"src:" : "peter.png", "name": "peter"},
+    {"src:" : "popeya.jpeg", "name": "popeya"},
+    {"src:" : "scoobydoo.jpeg", "name": "scoobydoo"},
+    {"src:" : "sinchan.jpg", "name": "sinchan"},
+    {"src:" : "sisimaru.jpeg", "name": "sisimaru"},
+    {"src:" : "sizuka.jpg", "name": "sizuka"},
+    {"src:" : "spike.png", "name": "spike"},
+    {"src:" : "tom.png", "name": "tom"}
+  ]
+
+  const [displayCards,setDisplayCards] = useState([])
+
+  const shuffleCards = ()=>{
+    const tempShuffledCards = [...images,...images].sort(()=> Math.random()-0.5).map((card)=> ({...card,"id": Math.random()}))
+    setDisplayCards(tempShuffledCards)
+  }
+
+  const startGame = ()=>{
+    shuffleCards();
+  }
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <button onClick={startGame}>Start</button>
+        <br /><br />
+
+        {displayCards.map((card)=>{
+          return <img 
+            src={`./image/cartoon/${card["src:"]}`} 
+            alt={card.name} 
+            key={card.id} 
+            width="125px"
+            height="100px" />
+        })}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
