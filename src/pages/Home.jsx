@@ -39,29 +39,40 @@ const Home = ({setGameDetails}) => {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-            <input type="text" name="firstPlayer" onChange={(e)=> setFirstPlayer(e.target.value)} value={firstPlayer}/>
-            <input type="text" name="secondPlayer" onChange={(e)=> setSecondPlayer(e.target.value)} value={secondPlayer}/>
+            <label htmlFor="firstPlayerInput">First Player :</label>
+            <input type="text" id="firstPlayerInput" name="firstPlayer" onChange={(e)=> setFirstPlayer(e.target.value)} value={firstPlayer}/>
+            <br />
+
+            <label htmlFor="secondPlayerInput">Second Player :</label>
+            <input type="text" id="secondPlayerInput" name="secondPlayer" onChange={(e)=> setSecondPlayer(e.target.value)} value={secondPlayer}/>
+            <br />
             
-            <select name="cardCategory" value={cardCategory} onChange={handleSelect}>
+            <label htmlFor="cardCategoryInput">Card category :</label>
+            <select id="cardCategoryInput" name="cardCategory" value={cardCategory} onChange={handleSelect}>
                 <option value="">Choose One</option>
             {Object.keys(cardCategoryList).map(key=>{
                 return <option value={key} key={key}>{key}</option>
             })}
             </select>
-            
-            <select name="difficultyLevel" value={difficultyLevel} onChange={handleSelect}>
+            <br />
+
+            <label htmlFor="difficultyLevelInput">Difficulty :</label>
+            <select id="difficultyLevelInput" name="difficultyLevel" value={difficultyLevel} onChange={handleSelect}>
                 <option value="">Choose One</option>
             {Object.keys(difficultyLevelsList).map(key=>{
                 return <option value={key} key={key}>{key}</option>
             })}
             </select>
+            <br />
 
-            <select name="cardCover" value={cardCover} onChange={handleSelect}>
+            <label htmlFor="cardCoverInput">Card cover :</label>
+            <select id="cardCoverInput" name="cardCover" value={cardCover} onChange={handleSelect}>
                 <option value="">Choose One</option>
             {Object.keys(cardCoverList).map(key=>{
                 return <option value={key} key={key}>{key}</option>
             })}
             </select>
+            <br />
             
             <input type="submit" value="Play" />
         </form>
