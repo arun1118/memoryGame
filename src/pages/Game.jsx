@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import imageSources from "../constants/sources.js"
 import cardCategoryList from '../constants/cardCategoryList.js'
 import difficultyLevelsList from '../constants/difficultyLevel.js'
-import cardCoverList from '../constants/coverList.js'
+import cardCoverList from '../constants/cardCoverList.js'
 
 const Game = ({gameDetails}) => {
 

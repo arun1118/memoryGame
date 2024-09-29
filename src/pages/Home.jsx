@@ -1,8 +1,9 @@
 import React, { createContext, useState } from 'react'
 import cardCategoryList from "../constants/cardCategoryList.js"
 import difficultyLevelsList from '../constants/difficultyLevel.js'
-import cardCoverList from '../constants/coverList.js'
+import cardCoverList from '../constants/cardCoverList.js'
 import { useNavigate } from 'react-router-dom'
+import './Home.css'
 
 const Home = ({setGameDetails}) => {
 
@@ -20,6 +21,18 @@ const Home = ({setGameDetails}) => {
         if(name === "cardCategory") setCardCategory(key)
         else if (name === "difficultyLevel") setDifficultyLevel(key)
         else if (name === "cardCover") setCardCover(key)
+    }
+
+    const handleCardCategorySelection = (cardCategorySelected)=>{
+        setCardCategory(cardCategorySelected)
+    }
+
+    const handleCardCoverSelection = (cardSelected)=>{
+        setCardCover(cardSelected)
+    }
+
+    const handleDifficultyLevelSelection = (difficultyLevelSelected)=>{
+        setDifficultyLevel(difficultyLevelSelected)
     }
 
     const handleSubmit=(e)=>{
@@ -46,34 +59,44 @@ const Home = ({setGameDetails}) => {
             <label htmlFor="secondPlayerInput">Second Player :</label>
             <input type="text" id="secondPlayerInput" name="secondPlayer" onChange={(e)=> setSecondPlayer(e.target.value)} value={secondPlayer}/>
             <br />
-            
-            <label htmlFor="cardCategoryInput">Card category :</label>
-            <select id="cardCategoryInput" name="cardCategory" value={cardCategory} onChange={handleSelect}>
-                <option value="">Choose One</option>
-            {Object.keys(cardCategoryList).map(key=>{
-                return <option value={key} key={key}>{key}</option>
+
+            <p>choose the card cover :</p>
+            {Object.entries(cardCategoryList).map(([carCategoryKey,cardCategoryValue])=>{
+                return <img 
+                            key={carCategoryKey}
+                            style={{width : "100px", height: "125px"}} 
+                            src={`./image/cardTemplate/${cardCategoryValue}.jpeg`} 
+                            alt={`card-category-${cardCategoryValue}`} 
+                            onClick={()=> handleCardCategorySelection(carCategoryKey)} 
+                            className={(cardCategory === carCategoryKey) ? 'choosen-card' : ''} />
             })}
-            </select>
             <br />
 
-            <label htmlFor="difficultyLevelInput">Difficulty :</label>
-            <select id="difficultyLevelInput" name="difficultyLevel" value={difficultyLevel} onChange={handleSelect}>
-                <option value="">Choose One</option>
-            {Object.keys(difficultyLevelsList).map(key=>{
-                return <option value={key} key={key}>{key}</option>
+            <p>choose the diffuculty level</p>
+            {Object.keys(difficultyLevelsList).map(difficultyLevelKey=>{
+                return <div key={difficultyLevelKey}>
+                    <input 
+                        type="radio" 
+                        id={`difficulty-level-option-${difficultyLevelKey}`} 
+                        name="difficultyLevelInput" 
+                        value={difficultyLevelKey} 
+                        onChange={()=> handleDifficultyLevelSelection(difficultyLevelKey)} />
+                    <label htmlFor={`difficulty-level-option-${difficultyLevelKey}`}>{difficultyLevelKey}</label>
+                </div>
             })}
-            </select>
+
+            <p>choose the card cover :</p>
+            {Object.entries(cardCoverList).map(([cardCoverKey,cardCoverValue])=>{
+                return <img 
+                            key={cardCoverKey}
+                            style={{width : "100px", height: "125px"}} 
+                            src={`./image/cover/${cardCoverValue}.jpeg`} 
+                            alt={`card-cover-${cardCoverValue}`} 
+                            onClick={()=> handleCardCoverSelection(cardCoverKey)} 
+                            className={(cardCover === cardCoverKey) ? 'choosen-card' : ''} />
+            })}
             <br />
 
-            <label htmlFor="cardCoverInput">Card cover :</label>
-            <select id="cardCoverInput" name="cardCover" value={cardCover} onChange={handleSelect}>
-                <option value="">Choose One</option>
-            {Object.keys(cardCoverList).map(key=>{
-                return <option value={key} key={key}>{key}</option>
-            })}
-            </select>
-            <br />
-            
             <input type="submit" value="Play" />
         </form>
       </div>
