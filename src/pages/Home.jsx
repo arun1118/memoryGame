@@ -7,10 +7,17 @@ const Home = ({setGameDetails}) => {
 
     const navigate = useNavigate();
 
-    const [firstPlayer, setFirstPlayer] = useState("")
-    const [secondPlayer, setSecondPlayer] = useState("")
-    const [cardCategory, setCardCategory] = useState(cardCategoryList.cartoon)
-    const [difficultyLevel, setDifficultyLevel] = useState(difficultyLevelsList.medium)
+    const [firstPlayer, setFirstPlayer] = useState("Ben")
+    const [secondPlayer, setSecondPlayer] = useState("Gwen")
+    const [cardCategory, setCardCategory] = useState("")
+    const [difficultyLevel, setDifficultyLevel] = useState("")
+
+    const handleSelect = (e)=>{
+        var key = e.target.value;
+        var name = e.target.name;
+        if(name === "cardCategory") setCardCategory(key)
+        else if (name === "difficultyLevel") setDifficultyLevel(key)
+    }
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -30,6 +37,18 @@ const Home = ({setGameDetails}) => {
         <form onSubmit={handleSubmit}>
             <input type="text" name="firstPlayer" onChange={(e)=> setFirstPlayer(e.target.value)} value={firstPlayer}/>
             <input type="text" name="secondPlayer" onChange={(e)=> setSecondPlayer(e.target.value)} value={secondPlayer}/>
+            <select name="cardCategory" value={cardCategory} onChange={handleSelect}>
+                <option value="">Choose One</option>
+            {Object.keys(cardCategoryList).map(key=>{
+                return <option value={key} key={key}>{key}</option>
+            })}
+            </select>
+            <select name="difficultyLevel" value={difficultyLevel} onChange={handleSelect}>
+                <option value="">Choose One</option>
+            {Object.keys(difficultyLevelsList).map(key=>{
+                return <option value={key} key={key}>{key}</option>
+            })}
+            </select>
             <input type="submit" value="Submit" />
         </form>
       </div>

@@ -1,40 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import Card from "../components/Card.jsx"
 import { Link } from 'react-router-dom'
+import imageSources from "../constants/sources.js"
+import cardCategoryList from '../constants/cardCategoryList.js'
+import difficultyLevelsList from '../constants/difficultyLevel.js'
 
 const Game = ({gameDetails}) => {
-
-    const images = [
-        {"src:" : "ben.png", "name": "ben10", "matched": false},
-        {"src:" : "doremon.jpg", "name": "doremon", "matched": false},
-        {"src:" : "duck.jpeg", "name": "duck", "matched": false},
-        {"src:" : "hattori.jpg", "name": "hattori", "matched": false},    
-        // {"src:" : "jack.png", "name": "jack", "matched": false},
-        // {"src:" : "jerry.png", "name": "jerry", "matched": false},
-        // {"src:" : "oggy.jpeg", "name": "oggy", "matched": false},
-        // {"src:" : "peter.png", "name": "peter", "matched": false},
-        // {"src:" : "popeya.jpeg", "name": "popeya", "matched": false},
-        // {"src:" : "scoobydoo.jpeg", "name": "scoobydoo", "matched": false},
-        // {"src:" : "sinchan.jpg", "name": "sinchan", "matched": false},
-        // {"src:" : "sisimaru.jpeg", "name": "sisimaru", "matched": false},
-        // {"src:" : "sizuka.jpg", "name": "sizuka", "matched": false},
-        // {"src:" : "spike.png", "name": "spike", "matched": false},
-        // {"src:" : "tom.png", "name": "tom", "matched": false}
-      ]
 
       const [displayCards,setDisplayCards] = useState([])
       const [firstCard,setFirstCard] = useState(null)
       const [secondCard,setSecondCard] = useState(null)
       const [flipDisable,setFlipDisable] = useState(false)
       const [turn,setTurn] = useState(1)
-      const [score,setScore] = useState({"firstPerson": 0, "secondPerson": 0})
+      const [score,setScore] = useState({[gameDetails.firstPlayer]: 0, [gameDetails.secondPlayer]: 0})
 
       const shuffleCards = ()=>{
+        let imageDirName = cardCategoryList[gameDetails.cardCategory]
+        let noOfCards = difficultyLevelsList[gameDetails.difficultyLevel]
+        const allImages = imageSources[imageDirName]
+        const images = allImages.sort(()=> Math.random()-0.5).slice(0,noOfCards)
         const tempShuffledCards = [...images,...images].sort(()=> Math.random()-0.5).map((card)=> ({...card,"id": Math.random()}))
         setDisplayCards(tempShuffledCards)
         setFirstCard(null)
         setSecondCard(null)
-        setScore({"firstPerson": 0, "secondPerson": 0})
+        setScore({[gameDetails.firstPlayer]: 0, [gameDetails.secondPlayer]: 0})
         setTurn(Math.floor(Math.random()*2)+1)
       }
       
@@ -70,13 +59,15 @@ const Game = ({gameDetails}) => {
             })
             resetCardChoie()
             setScore((prevValue)=>{
-              if(turn&1) return {...prevValue, "firstPerson": prevValue.firstPerson+1}
-              else return {...prevValue, "secondPerson": prevValue.secondPerson+1}
+              if(turn&1) return {...prevValue, [gameDetails.firstPlayer]: prevValue[gameDetails.firstPlayer]+1}
+              else return {...prevValue, [gameDetails.secondPlayer]: prevValue[gameDetails.secondPlayer]+1}
             })
           }
           else{
-            setTimeout(()=> resetCardChoie(), 1500) 
-            setTurn((prevValue)=> (prevValue&1)?2:1)
+            setTimeout(()=> {
+                resetCardChoie();
+                setTurn((prevValue)=> (prevValue&1)?2:1)}, 1500) 
+            
           }
         }
       },[firstCard, secondCard])
@@ -90,7 +81,7 @@ const Game = ({gameDetails}) => {
         <p>{gameDetails.difficultyLevel}</p>
         <div style={{backgroundColor : (turn&1)? "red" : "blue" }}>
             <p style={{color: "white"}}>person turn : {turn}</p>
-            <p style={{color: "white"}}>{score.firstPerson} ------ {score.secondPerson}</p>
+            <p style={{color: "white"}}>{score[gameDetails.firstPlayer]} ------ {score[gameDetails.secondPlayer]}</p>
             <button onClick={startGame}>Start</button>
             <br /><br />
             <div style={{display: "flex", flexWrap: "wrap"}}>

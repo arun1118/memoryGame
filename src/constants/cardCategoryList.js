@@ -1,6 +1,6 @@
-const cardCategoryList = Object.freeze({
-    cartoon : "cartoon",
-    animals : "animal"
-})
+const cardCategoryList = {
+    "Cartoons" : "cartoon",
+    "Animals" : "animal"
+}
 
 export default cardCategoryList

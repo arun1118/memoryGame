@@ -1,8 +1,8 @@
-const difficultyLevelsList = Object.freeze({
-    easy : 5,
-    medium : 10,
-    hard : 15
-})
+const difficultyLevelsList = {
+    "Easy" : 5,
+    "Medium" : 10,
+    "Hard" : 15,
+}
 
 
 
