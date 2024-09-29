@@ -14,6 +14,7 @@ const Game = ({gameDetails}) => {
       const [flipDisable,setFlipDisable] = useState(false)
       const [turn,setTurn] = useState(1)
       const [score,setScore] = useState({[gameDetails.firstPlayer]: 0, [gameDetails.secondPlayer]: 0})
+      const [cardsLeft,setCardsLeft] = useState(difficultyLevelsList[gameDetails.difficultyLevel])
 
       const shuffleCards = ()=>{
         let imageDirName = cardCategoryList[gameDetails.cardCategory]
@@ -25,6 +26,7 @@ const Game = ({gameDetails}) => {
         setFirstCard(null)
         setSecondCard(null)
         setScore({[gameDetails.firstPlayer]: 0, [gameDetails.secondPlayer]: 0})
+        setCardsLeft(difficultyLevelsList[gameDetails.difficultyLevel])
         setTurn(Math.floor(Math.random()*2)+1)
       }
       
@@ -58,6 +60,7 @@ const Game = ({gameDetails}) => {
                 else return currentCard
               })
             })
+            setCardsLeft((prevValue)=> prevValue-1)
             resetCardChoie()
             setScore((prevValue)=>{
               if(turn&1) return {...prevValue, [gameDetails.firstPlayer]: prevValue[gameDetails.firstPlayer]+1}
@@ -67,7 +70,7 @@ const Game = ({gameDetails}) => {
           else{
             setTimeout(()=> {
                 resetCardChoie();
-                setTurn((prevValue)=> (prevValue&1)?2:1)}, 1500) 
+                setTurn((prevValue)=> (prevValue&1)?2:1)}, 1000) 
             
           }
         }
@@ -76,13 +79,22 @@ const Game = ({gameDetails}) => {
     return (
       <>
         <Link to="/">Home</Link>
-        <p>{gameDetails.firstPlayer}</p>
-        <p>{gameDetails.secondPlayer}</p>
-        <p>{gameDetails.cardCategory}</p>
-        <p>{gameDetails.difficultyLevel}</p>
+        <p>player 1 : {gameDetails.firstPlayer}</p>
+        <p>player 2 : {gameDetails.secondPlayer}</p>
+        <p>card category : {gameDetails.cardCategory}</p>
+        <p>difficulty level : {gameDetails.difficultyLevel}</p>
+        <p>cards left : {cardsLeft}</p>
+        <h2 style={{display: (cardsLeft===0)? "block" : "none"}}>
+            winner is &nbsp;
+            {(score[gameDetails.firstPlayer] > score[gameDetails.secondPlayer]) ? gameDetails.firstPlayer : gameDetails.secondPlayer}
+        </h2>
         <div style={{backgroundColor : (turn&1)? "red" : "blue" }}>
-            <p style={{color: "white"}}>person turn : {turn}</p>
-            <p style={{color: "white"}}>{score[gameDetails.firstPlayer]} ------ {score[gameDetails.secondPlayer]}</p>
+            <p style={{color: "white"}}>turn : {(turn&1) ? gameDetails.firstPlayer : gameDetails.secondPlayer}</p>
+            <p style={{color: "white"}}>
+                {gameDetails.firstPlayer} : {score[gameDetails.firstPlayer]}
+                &nbsp; &nbsp; &nbsp; &nbsp; 
+                {gameDetails.secondPlayer} : {score[gameDetails.secondPlayer]}
+            </p>
             <button onClick={startGame}>Start</button>
             <br /><br />
             <div style={{display: "flex", flexWrap: "wrap"}}>
