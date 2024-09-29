@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import imageSources from "../constants/sources.js"
 import cardCategoryList from '../constants/cardCategoryList.js'
 import difficultyLevelsList from '../constants/difficultyLevel.js'
+import cardCoverList from '../constants/coverList.js'
 
 const Game = ({gameDetails}) => {
 
@@ -91,7 +92,9 @@ const Game = ({gameDetails}) => {
                 handleClick={handleClick} 
                 key={card.id} 
                 isFlip={card === firstCard || card === secondCard || card.matched} 
-                flipDisable={flipDisable} />
+                flipDisable={flipDisable}
+                cardCategory={cardCategoryList[gameDetails.cardCategory]}
+                cardCover={cardCoverList[gameDetails.cardCover]} />
             })}
             </div>
         </div>

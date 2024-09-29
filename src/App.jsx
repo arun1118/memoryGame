@@ -9,7 +9,8 @@ const App = () => {
                                                 "firstPlayer": "test", 
                                                 "secondPlayer": "", 
                                                 "cardCategory": "", 
-                                                "difficultyLevel": "" })
+                                                "difficultyLevel": "",
+                                                "cardCover": "" })
 
     return (
       <BrowserRouter>
