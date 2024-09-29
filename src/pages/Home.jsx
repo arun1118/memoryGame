@@ -15,14 +15,6 @@ const Home = ({setGameDetails}) => {
     const [difficultyLevel, setDifficultyLevel] = useState("")
     const [cardCover, setCardCover] = useState("")
 
-    const handleSelect = (e)=>{
-        var key = e.target.value;
-        var name = e.target.name;
-        if(name === "cardCategory") setCardCategory(key)
-        else if (name === "difficultyLevel") setDifficultyLevel(key)
-        else if (name === "cardCover") setCardCover(key)
-    }
-
     const handleCardCategorySelection = (cardCategorySelected)=>{
         setCardCategory(cardCategorySelected)
     }
@@ -60,7 +52,7 @@ const Home = ({setGameDetails}) => {
             <input type="text" id="secondPlayerInput" name="secondPlayer" onChange={(e)=> setSecondPlayer(e.target.value)} value={secondPlayer}/>
             <br />
 
-            <p>choose the card cover :</p>
+            <p>choose the card category :</p>
             {Object.entries(cardCategoryList).map(([carCategoryKey,cardCategoryValue])=>{
                 return <img 
                             key={carCategoryKey}

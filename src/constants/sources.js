@@ -33,6 +33,27 @@ const imageSources = {
         {"src:" : "squirrel.jpeg", "name": "squirrel"},
         {"src:" : "tiger.jpeg", "name": "tiger"},
         {"src:" : "wolf.jpeg", "name": "wolf"},
+    ],
+
+    "car" : [
+        {"src:" : "astonmartin.png", "name": "astonmartin"},
+        {"src:" : "audi.jpg", "name": "audi"},
+        {"src:" : "bmw.png", "name": "bmw"},
+        {"src:" : "bugatti.jpg", "name": "bugatti"},    
+        {"src:" : "ferrari.jpg", "name": "ferrari"},
+        {"src:" : "hyundai.png", "name": "hyundai"},
+        {"src:" : "jaguar.jpg", "name": "jaguar"},
+        {"src:" : "koenigsegg.png", "name": "koenigsegg"},
+        {"src:" : "lamborghini.jpg", "name": "lamborghini"},
+        {"src:" : "landrover.jpeg", "name": "landrover"},
+        {"src:" : "mahendra.jpg", "name": "mahendra"},
+        {"src:" : "mclaren.jpeg", "name": "mclaren"},
+        {"src:" : "mercedes.jpg", "name": "mercedes"},
+        {"src:" : "porsche.png", "name": "porsche"},
+        {"src:" : "rollsroyce.jpg", "name": "rollsroyce"},
+        {"src:" : "tata.jpg", "name": "tata"},
+        {"src:" : "toyota.jpg", "name": "toyota"},
+        {"src:" : "volkswagen.jpg", "name": "volkswagen"},
     ]
 }
 

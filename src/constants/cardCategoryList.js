@@ -1,6 +1,7 @@
 const cardCategoryList = {
     "Cartoons" : "cartoon",
-    "Animals" : "animal"
+    "Animals" : "animal",
+    "Cars" : "car"
 }
 
 export default cardCategoryList
