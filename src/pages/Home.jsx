@@ -42,54 +42,56 @@ const Home = ({setGameDetails}) => {
 
 
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="firstPlayerInput">First Player :</label>
-            <input type="text" id="firstPlayerInput" name="firstPlayer" onChange={(e)=> setFirstPlayer(e.target.value)} value={firstPlayer}/>
-            <br />
+      <div id="parent-container">
+        <form id="form-container" onSubmit={handleSubmit}>
+            <div id="form-input-field-container">
 
-            <label htmlFor="secondPlayerInput">Second Player :</label>
-            <input type="text" id="secondPlayerInput" name="secondPlayer" onChange={(e)=> setSecondPlayer(e.target.value)} value={secondPlayer}/>
-            <br />
-
-            <p>choose the card category :</p>
-            {Object.entries(cardCategoryList).map(([carCategoryKey,cardCategoryValue])=>{
-                return <img 
-                            key={carCategoryKey}
-                            style={{width : "100px", height: "125px"}} 
-                            src={`./image/cardTemplate/${cardCategoryValue}.jpeg`} 
-                            alt={`card-category-${cardCategoryValue}`} 
-                            onClick={()=> handleCardCategorySelection(carCategoryKey)} 
-                            className={(cardCategory === carCategoryKey) ? 'choosen-card' : ''} />
-            })}
-            <br />
-
-            <p>choose the diffuculty level</p>
-            {Object.keys(difficultyLevelsList).map(difficultyLevelKey=>{
-                return <div key={difficultyLevelKey}>
-                    <input 
-                        type="radio" 
-                        id={`difficulty-level-option-${difficultyLevelKey}`} 
-                        name="difficultyLevelInput" 
-                        value={difficultyLevelKey} 
-                        onChange={()=> handleDifficultyLevelSelection(difficultyLevelKey)} />
-                    <label htmlFor={`difficulty-level-option-${difficultyLevelKey}`}>{difficultyLevelKey}</label>
+                <div id="player-name-field-container">
+                    <input type="text" id="firstPlayerInput" name="firstPlayer" onChange={(e)=> setFirstPlayer(e.target.value)} value={firstPlayer}/>
+                    <input type="text" id="secondPlayerInput" name="secondPlayer" onChange={(e)=> setSecondPlayer(e.target.value)} value={secondPlayer}/>
                 </div>
-            })}
 
-            <p>choose the card cover :</p>
-            {Object.entries(cardCoverList).map(([cardCoverKey,cardCoverValue])=>{
-                return <img 
-                            key={cardCoverKey}
-                            style={{width : "100px", height: "125px"}} 
-                            src={`./image/cover/${cardCoverValue}.jpeg`} 
-                            alt={`card-cover-${cardCoverValue}`} 
-                            onClick={()=> handleCardCoverSelection(cardCoverKey)} 
-                            className={(cardCover === cardCoverKey) ? 'choosen-card' : ''} />
-            })}
-            <br />
+                <div className="card-selector-side-scroll-container">
+                    {Object.entries(cardCategoryList).map(([carCategoryKey,cardCategoryValue])=>{
+                        return <img 
+                                    key={carCategoryKey}
+                                    src={`./image/cardTemplate/${cardCategoryValue}.jpeg`} 
+                                    alt={`card-category-${cardCategoryValue}`} 
+                                    onClick={()=> handleCardCategorySelection(carCategoryKey)} 
+                                    className={(cardCategory === carCategoryKey) ? 'choosen-card' : ''} />
+                    })}
+                </div>
 
-            <input type="submit" value="Play" />
+                <div className="card-selector-side-scroll-container">
+                    {Object.entries(cardCoverList).map(([cardCoverKey,cardCoverValue])=>{
+                        return <img 
+                                    key={cardCoverKey} 
+                                    src={`./image/cover/${cardCoverValue}.jpeg`} 
+                                    alt={`card-cover-${cardCoverValue}`} 
+                                    onClick={()=> handleCardCoverSelection(cardCoverKey)} 
+                                    className={(cardCover === cardCoverKey) ? 'choosen-card' : ''} />
+                    })}
+                </div>
+
+                <div id="difficulty-level-container">
+                    {Object.keys(difficultyLevelsList).map(difficultyLevelKey=>{
+                        return <div key={difficultyLevelKey} className="difficulty-level-label">
+                            <input 
+                                type="radio" 
+                                id={`difficulty-level-option-${difficultyLevelKey}`} 
+                                name="difficultyLevelinput"
+                                value={difficultyLevelKey} 
+                                onChange={()=> handleDifficultyLevelSelection(difficultyLevelKey)} />
+                            <label htmlFor={`difficulty-level-option-${difficultyLevelKey}`}>{difficultyLevelKey}</label>
+                        </div>
+                    })}
+                </div>
+            </div>
+
+            <div id="play-button-container">
+                <input type="submit" value="Play" />
+            </div>
+
         </form>
       </div>
     )

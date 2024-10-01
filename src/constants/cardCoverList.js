@@ -1,5 +1,4 @@
 const cardCoverList = {
-    "Black" : "black",
     "Purple" : "purple",
     "Yellow" : "yellow",
     "White" : "white",
