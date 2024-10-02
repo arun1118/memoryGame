@@ -1,0 +1,95 @@
+:root {
+    --homeButtonColor: rgb(210, 12, 68);
+    --restartButtonColor: rgb(7, 131, 156);
+  }
+
+#parent-container{
+    position: absolute;
+    border: 1px solid blue;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#home-button-container{
+    border: 1px solid red;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: linear-gradient(to left, var(--homeButtonColor) , white);
+}
+
+#home-button-container p{
+    transform: rotate(180deg);
+    flex: 5;
+    text-align: center;
+    color: white;
+    font-size: large;
+    font-weight: 200;
+    text-transform: capitalize;
+}
+
+#home-button-container button{
+    height: 100%;
+    width: 15%;
+    border-radius: 0 0 75% 0;
+    background-color: var(--homeButtonColor);
+    border: none;
+    flex: 1;
+}
+
+#home-button-container img{
+    margin-right: 1rem;
+}
+
+#card-parent-container{
+    border: 1px solid green;
+    flex: 13;
+    width: 100%;
+}
+
+#restart-button-container{
+    border: 1px solid orange;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to right, var(--restartButtonColor) , white);
+}
+
+#restart-button-container p{
+    flex: 5;
+    text-align: center;
+    color: white;
+    font-size: large;
+    font-weight: 200;
+    text-transform: capitalize;
+}
+
+#restart-button-container button{
+    height: 100%;
+    width: 15%;
+    border-radius: 75% 0 0 0;
+    background-color: var(--restartButtonColor);
+    border: none;
+}
+
+#restart-button-container img{
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+}
+
+
+
+.game-buttons{
+    width: 2rem;
+    height: 2rem;
+}
