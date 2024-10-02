@@ -85,13 +85,34 @@ const Game = ({gameDetails}) => {
               <img src="./image/asset/home-icon.png" alt="home" className="game-buttons" />
             </Link>
           </button>
-          <p>{(turn&1) ? "your turn" : ""}</p>
+          <p>Score : {score[gameDetails.firstPlayer]} &nbsp; &nbsp; {(turn&1) ? `${gameDetails.firstPlayer}'s turn` : ""}</p>
         </div>
-        <div id="card-parent-container">
-
+        <div id="card-parent-container" className={(cardsLeft===0)? "winner-background" : (turn&1)? "first-player-background" : "second-player-background"}>
+          {
+            (cardsLeft===0)
+            ?
+            <h2 id="winner-header">
+              winner is &nbsp;
+              {(score[gameDetails.firstPlayer] > score[gameDetails.secondPlayer]) ? gameDetails.firstPlayer : gameDetails.secondPlayer}
+            </h2>
+            :
+            <>
+            {displayCards.map((card)=>{
+                return <Card 
+                          card={card} 
+                          handleClick={handleClick} 
+                          key={card.id} 
+                          isFlip={card === firstCard || card === secondCard || card.matched} 
+                          flipDisable={flipDisable}
+                          cardCategory={cardCategoryList[gameDetails.cardCategory]}
+                          cardCover={cardCoverList[gameDetails.cardCover]} />
+            })}
+            </>
+          }
+          
         </div>
         <div id="restart-button-container">
-          <p>{(turn&1) ? "" : "your turn"}</p>
+          <p> Score : {score[gameDetails.secondPlayer]} &nbsp; &nbsp; {(turn&1) ? "" : `${gameDetails.secondPlayer}'s turn`}</p>
           <button onClick={startGame}>
             <img src="./image/asset/restart-icon.png" alt="home" className="game-buttons" />
           </button>

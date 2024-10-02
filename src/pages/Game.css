@@ -1,11 +1,13 @@
 :root {
     --homeButtonColor: rgb(210, 12, 68);
+    --firstPlayerbackgroundColor: rgb(238, 133, 162);
     --restartButtonColor: rgb(7, 131, 156);
+    --secondPlayerbackgroundColor: rgb(126, 221, 240);
   }
 
 #parent-container{
     position: absolute;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -15,14 +17,14 @@
 }
 
 #home-button-container{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     flex: 1;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    background-image: linear-gradient(to left, var(--homeButtonColor) , white);
+    background-image: linear-gradient(to left, rgb(45, 45, 45), var(--homeButtonColor), white);
 }
 
 #home-button-container p{
@@ -30,18 +32,17 @@
     flex: 5;
     text-align: center;
     color: white;
-    font-size: large;
+    font-size: 1.5rem;
     font-weight: 200;
     text-transform: capitalize;
 }
 
 #home-button-container button{
     height: 100%;
-    width: 15%;
+    width: 18%;
     border-radius: 0 0 75% 0;
     background-color: var(--homeButtonColor);
     border: none;
-    flex: 1;
 }
 
 #home-button-container img{
@@ -49,34 +50,40 @@
 }
 
 #card-parent-container{
-    border: 1px solid green;
-    flex: 13;
+    /* border: 1px solid green; */
+    flex: 10;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 #restart-button-container{
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     flex: 1;
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-image: linear-gradient(to right, var(--restartButtonColor) , white);
+    background-image: linear-gradient(to right, rgb(45, 45, 45), var(--restartButtonColor), white);
 }
 
 #restart-button-container p{
     flex: 5;
     text-align: center;
     color: white;
-    font-size: large;
+    font-size: 1.5rem;
     font-weight: 200;
     text-transform: capitalize;
 }
 
 #restart-button-container button{
     height: 100%;
-    width: 15%;
+    width: 20%;
     border-radius: 75% 0 0 0;
     background-color: var(--restartButtonColor);
     border: none;
@@ -87,9 +94,26 @@
     margin-left: 0.5rem;
 }
 
-
-
 .game-buttons{
-    width: 2rem;
-    height: 2rem;
+    width: 2.3rem;
+    height: 2.3em;
+}
+
+.first-player-background{
+    background-image: linear-gradient(to bottom, var(--firstPlayerbackgroundColor) , white);
+}
+
+.second-player-background{
+    background-image: linear-gradient(to top, var(--secondPlayerbackgroundColor) , white);
+}
+
+.winner-background{
+    background-image: linear-gradient(to top, var(--secondPlayerbackgroundColor) , white, var(--firstPlayerbackgroundColor));
+}
+
+#winner-header{
+    text-align: center;
+    color: rgb(21, 18, 18);
+    font-size: 5rem;
+    transform: rotate(90deg);
 }
