@@ -53,23 +53,27 @@ const Home = ({setGameDetails}) => {
 
                 <div className="card-selector-side-scroll-container">
                     {Object.entries(cardCategoryList).map(([carCategoryKey,cardCategoryValue])=>{
-                        return <img 
-                                    key={carCategoryKey}
-                                    src={`./image/cardTemplate/${cardCategoryValue}.jpeg`} 
-                                    alt={`card-category-${cardCategoryValue}`} 
-                                    onClick={()=> handleCardCategorySelection(carCategoryKey)} 
-                                    className={(cardCategory === carCategoryKey) ? 'choosen-card' : ''} />
+                        return <div class="card-image-container">
+                            <img 
+                                key={carCategoryKey}
+                                src={`./image/cardTemplate/${cardCategoryValue}.jpeg`} 
+                                alt={`card-category-${cardCategoryValue}`} 
+                                onClick={()=> handleCardCategorySelection(carCategoryKey)} 
+                                className={(cardCategory === carCategoryKey) ? 'choosen-card' : ''} />
+                        </div>
                     })}
                 </div>
 
                 <div className="card-selector-side-scroll-container">
                     {Object.entries(cardCoverList).map(([cardCoverKey,cardCoverValue])=>{
-                        return <img 
-                                    key={cardCoverKey} 
-                                    src={`./image/cover/${cardCoverValue}.jpeg`} 
-                                    alt={`card-cover-${cardCoverValue}`} 
-                                    onClick={()=> handleCardCoverSelection(cardCoverKey)} 
-                                    className={(cardCover === cardCoverKey) ? 'choosen-card' : ''} />
+                        return <div class="card-image-container"> 
+                            <img 
+                                key={cardCoverKey} 
+                                src={`./image/cover/${cardCoverValue}.jpeg`} 
+                                alt={`card-cover-${cardCoverValue}`} 
+                                onClick={()=> handleCardCoverSelection(cardCoverKey)} 
+                                className={(cardCover === cardCoverKey) ? 'choosen-card' : ''} />
+                        </div>
                     })}
                 </div>
 

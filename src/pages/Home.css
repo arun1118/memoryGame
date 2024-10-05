@@ -1,9 +1,20 @@
 #parent-container{
     position: absolute;
-    /* border: 1px solid blue; */
     height: 100%;
     width: 100%;
-    background-color: rgb(216, 213, 213);
+    background-image: url('./image/background/home-background3.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    animation: background-scroll 20s linear infinite;
+}
+
+@keyframes background-scroll {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 0%;
+    }
 }
 
 #form-container{
@@ -39,7 +50,7 @@
     align-items: center;
     justify-content: center;
     flex: 0.75;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 #player-name-field-container input{
@@ -47,8 +58,36 @@
     flex: 1;
     padding: 0.25rem;
     font-size: larger;
+    text-transform: capitalize;
+    font-family: "Comic Sans MS", cursive;
+    color: #1d1d1d;   
+    border-radius: 15px;
+    padding: 8px;
+
 }
 
+#player-name-field-container input:nth-child(1) {
+    background-color: #fa6868;
+    border: 2px solid #f42626;
+    box-shadow: -7px -7px 10px rgb(146, 1, 1);
+}
+
+
+#player-name-field-container input:nth-child(2) {
+    background-color: #03e1f5;
+    border: 2px solid #018996;
+    box-shadow: 7px 7px 10px rgb(1, 80, 146);
+}
+
+
+
+#player-name-field-container input:nth-child(1):focus {
+    background-color: #fa8787;
+}
+
+#player-name-field-container input:nth-child(2):focus {
+    background-color: #89e7ef;
+}
 
 
 .card-selector-side-scroll-container{
@@ -66,15 +105,22 @@
     padding-right: 1rem;
 }
 
+.card-image-container{
+    background-image: linear-gradient(to bottom right, #fa6868, white, #03e1f5, white);
+    border-radius: 30%;
+    padding: 0.5rem;
+}
+
 .card-selector-side-scroll-container img{
-    width: 9rem;
-    height: 10rem;
-    /* border: 1px solid green; */
+    width: 8rem;
+    height: 8.5rem;
+    border-radius: 30%;
 }
 
 .choosen-card{
-    /* border: 1px solid orange; */
-    padding: 1rem;
+    padding: 0.2rem;
+    border: 3px solid transparent;
+    background-image: linear-gradient(to bottom right, gray, black);
 }
 
 #difficulty-level-container{
@@ -85,8 +131,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    gap: 2rem;
+    justify-content: space-evenly;
 }
 
 .difficulty-level-label{
@@ -97,12 +142,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 
 .difficulty-level-label label {
-    font-size: 1.25rem;
+    font-size: 2rem;
+    color: rgb(164, 164, 164);
+    font-weight: bold;
 }
 
 .difficulty-level-label input[type="radio"] {
@@ -120,8 +167,24 @@
     justify-content: center;
 }
 
-#play-button-container input[type="submit"]{
-    width: 50%;
+#play-button-container input[type="submit"] {
+    width: 40%;
     height: 2.5rem;
-    font-size: xx-large;
+    font-size: x-large;
+    background-color: #f9e8e8;
+    color: black;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    border: 3px solid #ffcc00;
+    border-radius: 10px; 
+    box-shadow: 0 2px #ffcc00;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    text-shadow: 2px 2px #ffcc00;
+    animation: rotate 1s linear both infinite;
 }
+
+@keyframes rotate {
+    100% {
+      filter: hue-rotate(-360deg)
+    }
+  }
