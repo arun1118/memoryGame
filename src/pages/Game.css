@@ -14,6 +14,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    background-image: url('./image/background/game-background.jpeg');
 }
 
 #home-button-container, 
@@ -47,6 +48,7 @@
     border-radius: 50%;
     background-color: var(--homeButtonColor);
     border: none;
+    margin-left: 0.5rem;
 }
 
 #restart-button-container button{
@@ -55,6 +57,7 @@
     border-radius: 50%;
     background-color: var(--restartButtonColor);
     border: none;
+    margin-right: 0.5rem;
 }
 
 .game-buttons{

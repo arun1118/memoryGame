@@ -60,9 +60,8 @@ const Home = ({setGameDetails}) => {
 
                 <div className="card-selector-side-scroll-container">
                     {Object.entries(cardCategoryList).map(([carCategoryKey,cardCategoryValue])=>{
-                        return <div class="card-image-container">
+                        return <div className="card-image-container" key={carCategoryKey}>
                             <img 
-                                key={carCategoryKey}
                                 src={`./image/cardTemplate/${cardCategoryValue}.jpeg`} 
                                 alt={`card-category-${cardCategoryValue}`} 
                                 onClick={()=> handleCardCategorySelection(carCategoryKey)} 
@@ -73,9 +72,8 @@ const Home = ({setGameDetails}) => {
 
                 <div className="card-selector-side-scroll-container">
                     {Object.entries(cardCoverList).map(([cardCoverKey,cardCoverValue])=>{
-                        return <div class="card-image-container"> 
+                        return <div className="card-image-container"  key={cardCoverKey} > 
                             <img 
-                                key={cardCoverKey} 
                                 src={`./image/cover/${cardCoverValue}.jpeg`} 
                                 alt={`card-cover-${cardCoverValue}`} 
                                 onClick={()=> handleCardCoverSelection(cardCoverKey)} 
