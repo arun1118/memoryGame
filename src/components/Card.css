@@ -2,8 +2,15 @@
     position: relative;
 }
 
+.card:nth-child(odd){
+    transform: rotate(-2deg); 
+}
+    
+.card:nth-child(even){
+    transform: rotate(2deg); 
+}
+
 .card img{
-    border: 1px solid black;
     width: 4.5rem;
     height: 4rem;
     border-radius: 5%;
@@ -12,8 +19,24 @@
 .card .front-side{
     transform: rotateY(90deg);
     position: absolute;
+    transition: all 0.2s ease-in;
 }
 
 .card-flip .front-side{
+    border: 0.1rem solid black;
     transform: rotateY(0deg);
+    transition-delay: 0.2s;
+}
+
+.card .back-side{
+    border: 0.25rem solid;
+    border-image: linear-gradient(white, rgb(55, 55, 55), gray, white) 1;
+    transition: all 0.2s ease-in;
+    transition-delay: 0.2s;
+
+}
+
+.card-flip .back-side{
+    transform: rotateY(90deg);
+    transition-delay: 0s;   
 }

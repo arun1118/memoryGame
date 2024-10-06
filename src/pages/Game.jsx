@@ -79,24 +79,29 @@ const Game = ({gameDetails}) => {
 
     return (
       <div id="parent-container">
+
         <div id="home-button-container">
           <button>
             <Link to="/">
               <img src="./image/asset/home-icon.png" alt="home" className="game-buttons" />
             </Link>
           </button>
-          <p>Score : {score[gameDetails.firstPlayer]} &nbsp; &nbsp; {(turn&1) ? `${gameDetails.firstPlayer}'s turn` : ""}</p>
+          <p className='score-turn-detail'>Score : {score[gameDetails.firstPlayer]} &nbsp; &nbsp; {(turn&1) ? `${gameDetails.firstPlayer}'s turn` : ""}</p>
         </div>
-        <div id="card-parent-container" className={(cardsLeft===0)? "winner-background" : (turn&1)? "first-player-background" : "second-player-background"}>
+
+        <div id="play-area" className={(cardsLeft===0)? "winner-background" : (turn&1)? "first-player-background" : "second-player-background"}>
           {
             (cardsLeft===0)
             ?
-            <h2 id="winner-header">
-              winner is &nbsp;
-              {(score[gameDetails.firstPlayer] > score[gameDetails.secondPlayer]) ? gameDetails.firstPlayer : gameDetails.secondPlayer}
-            </h2>
+            <div id="winner-background">
+              <h2 id="winner-header">
+                winner is &nbsp;
+                {(score[gameDetails.firstPlayer] > score[gameDetails.secondPlayer]) ? gameDetails.firstPlayer : gameDetails.secondPlayer}
+                🎉🥳
+              </h2>
+            </div>
             :
-            <>
+            <div id="card-parent-container">
             {displayCards.map((card)=>{
                 return <Card 
                           card={card} 
@@ -107,16 +112,18 @@ const Game = ({gameDetails}) => {
                           cardCategory={cardCategoryList[gameDetails.cardCategory]}
                           cardCover={cardCoverList[gameDetails.cardCover]} />
             })}
-            </>
+            </div>
           }
           
         </div>
+        
         <div id="restart-button-container">
-          <p> Score : {score[gameDetails.secondPlayer]} &nbsp; &nbsp; {(turn&1) ? "" : `${gameDetails.secondPlayer}'s turn`}</p>
+          <p className='score-turn-detail'> Score : {score[gameDetails.secondPlayer]} &nbsp; &nbsp; {(turn&1) ? "" : `${gameDetails.secondPlayer}'s turn`}</p>
           <button onClick={startGame}>
             <img src="./image/asset/restart-icon.png" alt="home" className="game-buttons" />
           </button>
         </div>
+
       </div>
     )
 }
