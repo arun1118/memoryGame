@@ -9,6 +9,7 @@ const Home = ({setGameDetails}) => {
 
     const navigate = useNavigate();
 
+    const [backgroundImage, setBackgroundImage] = useState("./image/background/home-background1.jpeg")
     const [firstPlayer, setFirstPlayer] = useState("Ben")
     const [secondPlayer, setSecondPlayer] = useState("Gwen")
     const [cardCategory, setCardCategory] = useState("")
@@ -40,9 +41,15 @@ const Home = ({setGameDetails}) => {
         navigate("/game");
     }
 
+    const handleChangeBackground = ()=>{
+        const randomImageNumber = Math.floor(Math.random() * 7) + 1;
+        var backgroundImageUrl = `./image/background/home-background${randomImageNumber}.jpeg`
+        setBackgroundImage(backgroundImageUrl);
+    }
+
 
     return (
-      <div id="parent-container">
+      <div id="parent-container" style={{backgroundImage: `url(${backgroundImage})`}}>
         <form id="form-container" onSubmit={handleSubmit}>
             <div id="form-input-field-container">
 
@@ -92,8 +99,15 @@ const Home = ({setGameDetails}) => {
                 </div>
             </div>
 
-            <div id="play-button-container">
-                <input type="submit" value="Play" />
+            <div id="play-backgroundchange-button-container">
+                <div id="play-button-container">
+                    <input type="submit" value="Play" />
+                </div>
+                <div id="backgroundchange-button-container">
+                    <button type="button" onClick={handleChangeBackground} id="background-change-button">
+                        <img src="./image/asset/gallery.png" alt="change" />
+                    </button>
+                </div>
             </div>
 
         </form>
