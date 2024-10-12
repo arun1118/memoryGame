@@ -12,11 +12,12 @@ const Home = ({setGameDetails}) => {
     const [backgroundImage, setBackgroundImage] = useState("./image/background/home-background1.jpeg")
     const [firstPlayer, setFirstPlayer] = useState("Ben")
     const [secondPlayer, setSecondPlayer] = useState("Gwen")
-    const [cardCategory, setCardCategory] = useState("")
-    const [difficultyLevel, setDifficultyLevel] = useState("")
-    const [cardCover, setCardCover] = useState("")
+    const [cardCategory, setCardCategory] = useState("Cartoons")
+    const [difficultyLevel, setDifficultyLevel] = useState("Medium")
+    const [cardCover, setCardCover] = useState("Black")
 
     const handleCardCategorySelection = (cardCategorySelected)=>{
+        console.log(cardCategorySelected)
         setCardCategory(cardCategorySelected)
     }
 
@@ -90,6 +91,7 @@ const Home = ({setGameDetails}) => {
                                 id={`difficulty-level-option-${difficultyLevelKey}`} 
                                 name="difficultyLevelinput"
                                 value={difficultyLevelKey} 
+                                checked={difficultyLevel==difficultyLevelKey}
                                 onChange={()=> handleDifficultyLevelSelection(difficultyLevelKey)} />
                             <label htmlFor={`difficulty-level-option-${difficultyLevelKey}`}>{difficultyLevelKey}</label>
                         </div>

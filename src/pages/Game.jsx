@@ -78,7 +78,7 @@ const Game = ({gameDetails}) => {
       },[firstCard, secondCard])
 
     return (
-      <div id="parent-container">
+      <div id="parent-container" style={{backgroundImage: "url(./image/background/game-background.jpeg)"}}>
 
         <div id="home-button-container">
           <button>

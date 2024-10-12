@@ -23,6 +23,7 @@
 }
 
 .card-flip .front-side{
+    transform: rotateX(90deg);
     border: 0.1rem solid black;
     transform: rotateY(0deg);
     transition-delay: 0.2s;

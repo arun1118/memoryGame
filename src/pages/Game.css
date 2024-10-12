@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-image: url('./image/background/game-background.jpeg');
+    /* background-image: url('./image/background/game-background.jpeg'); */
     background-color: black;
 }
 
@@ -40,7 +40,7 @@
     font-size: 1.5rem;
     font-weight: 300;
     text-transform: capitalize;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', normal, sans-serif;
 }
 
 #home-button-container button{
@@ -62,8 +62,8 @@
 }
 
 .game-buttons{
-    width: 2.7rem;
-    height: 2.5rem;
+    width: 2.3rem;
+    height: 2.1rem;
 }
 
 #play-area{
@@ -112,5 +112,5 @@
     color: whitesmoke;
     font-size: 4rem;
     transform: rotate(90deg);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', normal, sans-serif;
 }

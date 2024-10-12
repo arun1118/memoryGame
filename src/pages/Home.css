@@ -6,6 +6,7 @@
     background-attachment: fixed;
     background-size: cover;
     animation: background-scroll 20s linear infinite;
+    background-color: black;
 }
 
 @keyframes background-scroll {
@@ -59,7 +60,7 @@
     padding: 0.25rem;
     font-size: larger;
     text-transform: capitalize;
-    font-family: "Comic Sans MS", cursive;
+    font-family: "Comic Sans MS", normal;
     color: #1d1d1d;   
     border-radius: 15px;
     padding: 8px;
@@ -182,7 +183,7 @@
     font-size: x-large;
     background-color: #f9e8e8;
     color: black;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', normal, sans-serif;
     border: 3px solid #ffcc00;
     border-radius: 10px; 
     box-shadow: 0 2px #ffcc00;
