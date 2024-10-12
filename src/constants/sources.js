@@ -2,7 +2,7 @@ const imageSources = {
     "cartoon" : [
         {"src:" : "ben.jpeg", "name": "ben10"},
         {"src:" : "doremon.jpeg", "name": "doremon"},
-        {"src:" : "duck.jpeg", "name": "duck"},
+        {"src:" : "bheem.jpeg", "name": "bheem"},
         {"src:" : "hattori.jpeg", "name": "hattori"},    
         {"src:" : "jack.jpeg", "name": "jack"},
         {"src:" : "jerry.jpeg", "name": "jerry"},
@@ -11,9 +11,9 @@ const imageSources = {
         {"src:" : "popeya.jpeg", "name": "popeya"},
         {"src:" : "scoobydoo.jpeg", "name": "scoobydoo"},
         {"src:" : "sinchan.jpeg", "name": "sinchan"},
-        {"src:" : "sisimaru.jpeg", "name": "sisimaru"},
-        {"src:" : "sizuka.jpeg", "name": "sizuka"},
-        {"src:" : "spike.jpeg", "name": "spike"},
+        {"src:" : "spongebob.jpeg", "name": "spongebob"},
+        {"src:" : "shizuka.jpeg", "name": "shizuka"},
+        {"src:" : "kungfupanda.jpeg", "name": "kungfupanda"},
         {"src:" : "tom.jpeg", "name": "tom"},
     ],
 
